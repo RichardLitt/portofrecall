@@ -1,0 +1,15 @@
+/* CSS declarations go here */
+
+$blue: #000066;
+$white: #ffffff;
+
+html {
+  background: linear-gradient(to right bottom, $blue, palevioletred);
+  color: $white;
+  height: 100%;
+}
+
+.splash {
+  margin-top: 300px;
+  text-align: center;
+}
