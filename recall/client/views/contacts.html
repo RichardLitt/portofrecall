@@ -10,8 +10,9 @@
               <div class="row">
                 {{#each contactArray}}
                 <div class="col-sm-3 message-box">
-                  <a href="/contact/{{_id}}">
-                    <p class="contact">{{ name }}</p>
+                  <a href="/contact/{{ contactUrl contact }}">
+                    <h1 class="contact">{{ name }}</h1>
+                    <p class="conversations">{{ conversationsCount id }}</p>
                   </a>
                 </div>
                 {{/each}}

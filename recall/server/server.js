@@ -6,6 +6,12 @@ if (Meteor.isServer){
     });
   });
 
+  Meteor.publish("contacts", function() {
+    return Contacts.find({
+      owner: this.userId
+    });
+  });
+
   Meteor.publish("userData", function () {
     return Meteor.users.find({_id: this.userId},
      {fields: {'services': 1}});

@@ -1,52 +1,6 @@
 if (Meteor.isClient){
 
   /**
-   * Helpers
-   */
-
-  Template.conversation_content.helpers({
-    toDateString: function(time){
-      return time && time.toDateString();
-    }
-  });
-
-  Template.conversation_content.markdown_data = function() {
-    return Session.get("markdown_data");
-  };
-
-  Template.conversation_content.contact_name_joined = function() {
-    if (this.contact) {
-      console.log(Contacts.find().fetch());
-      var contact = Contacts.findOne({name: this.contact});
-      console.log(contact);
-      console.log(contact.name.join('-'));
-      return contact.name.join('-');
-    }
-  };
-
-  Template.dossier.convArray = function() {
-    return Conversations.find().fetch();
-  };
-
-  Template.dossier.helpers({
-    toDateString: function(time){
-      return time && time.toLocaleDateString();
-    }
-  });
-
-  Template.dossier.contactArray = function() {
-    return Conversations.find({
-      contact: this.params._id
-    }).fetch();
-  };  
-
-  Template.contact.events = {
-    'click button#add_contact_submit': function() {
-      Meteor.call('addContact', document.getElementById("add_contact").value);
-    }
-  };
-
-  /**
    * Sidebar and global variables
    */
 
@@ -66,6 +20,66 @@ if (Meteor.isClient){
   Template.sidebar.conversations_count = function() {
     return _.size(Conversations.find().fetch());
   };
+
+
+  /**
+   * Helpers
+   */
+
+  Template.conversation_content.helpers({
+    toDateString: function(time) {
+      return time && time.toDateString();
+    }
+  });
+
+  Template.conversation_content.markdown_data = function() {
+    return Session.get("markdown_data");
+  };
+
+  Template.dossier.convArray = function() {
+    return Conversations.find().fetch();
+  };
+
+  Template.dossier.helpers({
+    toDateString: function(time){
+      return time && time.toLocaleDateString();
+    }
+  });
+
+  Template.contacts.contactArray = function() {
+    return Contacts.find().fetch();
+  };
+
+  // Template.contacts.contactUrl = function() {
+  //   if (this.contact) {
+  //     contact = Contacts.findOne({name: this.contact});
+  //     return contact && contact.split(' ').join('-');
+  //   }
+  // };
+
+  Template.contacts.helper =  {
+    contactUrl: function(contact) {
+      console.log('working');
+      if (this.contact) {
+        contact = Contacts.findOne({name: this.contact});
+        return contact && contact.split(' ').join('-');
+      }
+    },
+    conversationsCount: function(id) {
+      if (id) {
+        conversations = Conversations.find({contact: id});
+        return _.size(conversations);
+      }
+    }
+  };
+
+  Template.contacts.events = {
+    'click input#add_contact_submit': function() {
+      console.log(document.getElementById("add_contact").value);
+      Meteor.call('addContact', document.getElementById("add_contact").value);
+    }
+  };
+
 
   /** 
    * The Home Page functionality
