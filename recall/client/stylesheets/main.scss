@@ -105,6 +105,17 @@ body {
   }
 }
 
+.profile {
+  h1.contact, p.contact, p.conversations {
+    color: #444;
+  }
+  p.contact {
+    margin-top: 100px;
+    padding-left: 20px;
+    font-size: 20px;
+  }
+}
+
 .contact-box {
     background-color: rgba(0, 63, 11, .8);
     margin: 15px 15px 15px 0px;

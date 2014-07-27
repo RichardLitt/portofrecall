@@ -35,8 +35,8 @@ if (Meteor.isClient){
       return time && time.toDateString();
     },
     findContactId: function(name) {
-      console.log(name);
-      return Contacts.findOne({name: name}) && Contacts.findOne({name: name})._id;
+      return Contacts.findOne({name: name}) &&
+      Contacts.findOne({name: name})._id;
     }
   });
 
@@ -65,20 +65,31 @@ if (Meteor.isClient){
   //   }
   // };
 
-  Template.connections.helper =  {
-    // contactUrl: function(_id) {
-    //   console.log('working');
-    //   contact = Contacts.findOne({_id: _id});
-    //   return $Session.get(contact.name && contact.name.split(' ').join('-'));
-    // },
-    conversationsCount: function(id) {
-      console.log(_id);
-      if (_id) {
-        conversations = Conversations.find({contact: _id});
-        return Session.get(_.size(conversations));
-      }
+  Template.contact.helpers({
+    contractUrl: function(_id) {
+      console.log('contactUrl', _id);
+      contact = Contacts.findOne({_id: _id});
+      return Session.get(contact.name && contact.name.split(' ').join('-'));
+    },
+    conversationsCount: function(_id) {
+      author = Contacts.findOne({'_id': _id});
+      conversations = Conversations.find({'contact': author.name}).fetch();
+      return conversations.length;
     }
-  };
+  });
+
+  Template.connections.helpers({
+    contactUrl: function(_id) {
+      console.log('contactUrl', _id);
+      contact = Contacts.findOne({_id: _id});
+      return Session.get(contact.name && contact.name.split(' ').join('-'));
+    },
+    conversationsCount: function(_id) {
+      console.log('conversationsCount', _id);
+      author = Contacts.findOne({'_id': _id});
+      return Conversations && Conversations.find({contact: author.name}).fetch().length;
+    }
+  });
 
   Template.connections.events = {
     'click input#add_contact_submit': function() {

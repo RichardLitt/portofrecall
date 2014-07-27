@@ -35,10 +35,7 @@ Router.map(function(){
     path: '/conversations/:_id',
     loginRequired: 'login',
     waitOn: function() { return Meteor.subscribe('conversations', this.params._id)},
-    data: function() {
-      console.log(Conversations.findOne(this.params._id));
-      return Conversations.findOne(this.params._id);
-    }
+    data: function() { return Conversations.findOne(this.params._id); }
   });
   this.route('*', {
     action: function() {
