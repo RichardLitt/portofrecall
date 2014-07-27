@@ -2,9 +2,12 @@
   <!-- sidebar -->
   <div class="column col-sm-2 col-xs-1 sidebar-offcanvas" id="sidebar">
 
-      <img src="{{ currentUser.services.twitter.profile_image_url }}">
-
-      <h3>{{ currentUser.profile.name }}</h3>
+    <div class="profile-section">
+      <img src="{{ user_image }}">
+      <h2>{{ currentUser.profile.name }}</h2>
+      <h4>{{ contacts_count }} Contacts</h4>
+      <h4>{{ conversations_count }} Conversations</h4>
+    </div>
 
 <!--       [Object_id: "cZEocdgnbrnGBcjTW"profile: Objectname: "Richard Littauer"__proto__: Objectservices: Objecttwitter: Objectid: "118133101"lang: "en"profile_image_url -->
 
@@ -19,9 +22,7 @@
           <li><a href="#"><i class="glyphicon glyphicon-refresh"></i> Refresh</a></li>
       </ul>
       <ul class="list-unstyled hidden-xs" id="sidebar-footer">
-          <li>
-            {{> loginButtons }}
-          </li>
+        {{> loginButtons }}
       </ul>
 
       <!-- tiny only nav-->

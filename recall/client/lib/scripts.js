@@ -8,5 +8,7 @@ $('[data-toggle=offcanvas]').click(function() {
     $('#lg-menu').toggleClass('hidden-xs').toggleClass('visible-xs');
     $('#xs-menu').toggleClass('visible-xs').toggleClass('hidden-xs');
     $('#btnShow').toggle();
+  });
 });
-});
+
+$('textarea').autogrow(); 

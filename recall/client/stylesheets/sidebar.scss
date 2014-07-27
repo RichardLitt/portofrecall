@@ -89,15 +89,25 @@ hr {
 }
 
 #sidebar {
-    padding:0px;
-	padding-top:15px;
+  padding:0px;
+	padding-top:5px;
+  img {
+    border-radius: 50%;
+    display: block;
+    margin: 50px auto 0px;
+    border: 2px solid #FFF;
+    //border-style: inset;
+    box-shadow: 0px 5px 10px #000;
+  }
+  .profile-section {
+    text-align: center;
+  }
 }
 
 #sidebar, #sidebar a, #sidebar-footer a {
-    color:#ffffff;
-    background-color:transparent;
-	text-shadow:0 0 2px #000000;
-    padding-left:5px;
+  color:#ffffff;
+  background-color:transparent;
+  text-shadow:0 0 2px #000000;
 }
 #sidebar .nav li>a:hover {
     background-color:#393939;
@@ -107,7 +117,12 @@ hr {
   background-color:#444;
   position:absolute;
   bottom:5px;
-  padding:5px;
+  width: 100%;
+  text-align: center;
+  padding: 5px 0px 5px 0px;
+  border-top: 1px solid #fff;
+  text-transform: lowercase;
+  margin: 0px -5px 0px 0px;
 }
 #footer {
   margin-bottom:20px;

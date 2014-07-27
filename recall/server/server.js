@@ -4,6 +4,7 @@
 // Because we have these, you can disable insecure.
 
 if (Meteor.isServer){
+
   Meteor.methods({
     addContact: function(input){
       Contacts.insert({
