@@ -126,7 +126,7 @@ if (Meteor.isClient){
 
       conversationId =  Conversations.insert({
         title: new_conversation_title,
-        content: Session.set("markdown_data",new_conversation),
+        content: new_conversation,
         contact: new_contact,
         time: new Date(),
         owner: Meteor.users.findOne()._id
@@ -175,7 +175,7 @@ if (Meteor.isClient){
 
       conversationId =  Conversations.insert({
         title: new_conversation_title,
-        content: Session.set("markdown_data",new_conversation),
+        content: new_conversation,
         contact: new_contact,
         time: new Date(),
         owner: Meteor.users.findOne()._id
