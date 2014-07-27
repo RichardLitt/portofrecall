@@ -3,6 +3,9 @@ HomeController = RouteController.extend({
   yieldTemplates: {
     'splash': {
       to: 'content'
+    },
+    'navbar': {
+      to: 'navbar'
     }
   }
 })
