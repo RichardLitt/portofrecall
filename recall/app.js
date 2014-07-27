@@ -7,23 +7,28 @@ Router.map(function(){
     path: '/home',
     loginRequired: 'login'
   });
-  this.route('write', {
+  this.route('dossier', {
+    path: '/dossier',
     loginRequired: 'login'
   });
-  this.route('contactsShow', {
-    path: '/contacts/:_id',
-    data: function() { return Contacts.findOne(this.params._id); },
+  this.route('contact', {
+    path: '/contacts/:name',
+    data: function() {
+      return Contacts.findOne(this.params._id); 
+    },
+    loginRequired: 'login'
+  });
+  this.route('contact', {
+    path: '/contacts/',
+    data: function() {
+      return Contacts.find().fetch();
+    },
     loginRequired: 'login'
   });
   this.route('conversation', {
-    path: '/contacts/:name/:id',
+    path: '/conversations/:_id',
     data: function() {
-      /*
-      This won't work at the moment. you need to find the specific ID for that
-      message.
-       */
-      return Contacts.findOne(this.params._id),
-        Conversation.findOne(this.params._id); 
+      return Conversations.findOne(this.params._id);
     },
     loginRequired: 'login'
   });

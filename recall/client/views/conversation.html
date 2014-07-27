@@ -1,0 +1,23 @@
+<template name="conversation_content">
+  <div class="column col-sm-10 col-xs-11" id="main">
+      <div class="padding">
+          <div class="full col-sm-9">
+              <div class="row conversation">
+                <div class="col-sm-12">
+                  <div class="titles">
+                    <a href="/contacts/{{ contact_name_joined }}">
+                      <h1>{{ contact }}</h1>
+                    </a>
+                    <h3>Title: {{ title }}</h3>
+                    <h4>Date: {{ toDateString time }}</h4>
+                  </div>
+                  <!-- User by Jardson A. from The Noun Project -->
+                </div>
+                <div class="col-sm-8 content">
+                  {{#markdown}}{{ content }}{{/markdown}}
+                </div>
+              </div>
+          </div><!-- /col-9 -->
+      </div><!-- /padding -->
+  </div>
+</template>

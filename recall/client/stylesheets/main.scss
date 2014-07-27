@@ -55,7 +55,61 @@ body {
   }
 }
 
-.new-conversation {
+.conversation {
+  img {
+    max-height: 75px;
+    max-width: 75px;
+    float: right;
+  }
+  .titles {
+    h1, h3, h4 {
+      margin-top: 0px;
+      color: #444;
+    }
+  }
+  .content {
+    margin-top: 50px;
+     color: #444;
+     font-size: 18px;
+     line-height: 24px;
+  }
+}
+
+.message-box {
+  background-color: rgba(0,0,0,.1);
+  color: #444;
+  max-height: 200px;
+  height: 200px;
+  margin: 20px;
+  overflow: hidden;
+  padding-left: 0px;
+  padding-right: 0px;
+  .header-box { 
+    padding: 15px 15px 5px 15px;
+    background-color: rgba(0, 63, 11, .8);
+    color: #fff;
+  }
+  .contact {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 500;
+  }
+  .content {
+    position: relative;
+    top: -110px;
+    height: 200px;
+  }
+  .textshadow.blurry-text {
+   color: transparent;
+   text-shadow: 0 0 3px rgba(0,0,0,0.5);
+  }
+}
+
+.contacts {
+
+}
+
+.new-conversation, .add-contact {
   input[type="text"], textarea {
       border: 0px;
       background-color: transparent;
@@ -65,7 +119,8 @@ body {
       box-shadow: none;
   }
   textarea#new_conversation {
-    padding: 50px 0px;
+    padding: 30px 0px;
+    margin-bottom: 200px;
     width: 80%;
     line-height: 20px;
     font-size: 18px;
@@ -73,7 +128,7 @@ body {
     overflow: hidden;
     resize: none;
   }
-  input#new_conversation_title, input#new_contact {
+  input#new_conversation_title, input#new_contact, input#add_contact {
       background-color: rgba(0,0,0,.1);
       width: 50%;
       line-height: 30px;
@@ -81,8 +136,12 @@ body {
       height: 40px;
       margin-bottom: 20px;
   }
-  input#save {
+  input#save, input#add_contact_submit {
+    position: relative;
+    top: 0px;
+    right: 0px;
     width: 10%;
+    float: right;
     padding: 10px;
     background-color: rgba(0,0,0,.5);
     border: 0px;

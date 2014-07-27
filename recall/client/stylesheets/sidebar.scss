@@ -44,9 +44,9 @@ hr {
     padding: 20px;
 }
 
-.full{
-	padding-top:70px;
-}
+// .full{
+// 	padding-top:70px;
+// }
 
 .box {
   	bottom: 0; /* increase for footer use */
@@ -116,13 +116,16 @@ hr {
 #sidebar-footer {
   background-color:#444;
   position:absolute;
-  bottom:5px;
+  bottom: 0px;
   width: 100%;
   text-align: center;
   padding: 5px 0px 5px 0px;
   border-top: 1px solid #fff;
   text-transform: lowercase;
   margin: 0px -5px 0px 0px;
+  &:hover {
+    background-color: #222;
+  }
 }
 #footer {
   margin-bottom:20px;

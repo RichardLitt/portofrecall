@@ -7,7 +7,8 @@
       "accounts-ui-bootstrap-3": {},
       "bootstrap-3": {},
       "iron-router-auth": {},
-      "font-awesome-sass": {}
+      "font-awesome-sass": {},
+      "marked": {}
     },
     "packages": {
       "iron-router": {
@@ -39,6 +40,11 @@
         "git": "https://github.com/reywood/meteor-font-awesome-sass.git",
         "tag": "v4.1.0-1",
         "commit": "64b05d3c7654cf83b9f85240d1a340cbe1d55123"
+      },
+      "marked": {
+        "git": "https://github.com/chuangbo/meteor-marked.git",
+        "tag": "v0.3.2",
+        "commit": "850f63135cdeb05344c420bd586fd8af9cab75df"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",

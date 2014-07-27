@@ -4,7 +4,6 @@
 # but you can also edit it by hand.
 
 standard-app-packages
-autopublish
 insecure
 iron-router
 bootstrap
@@ -15,3 +14,4 @@ accounts-ui-bootstrap-3
 iron-router-auth
 jquery
 font-awesome-sass
+marked
