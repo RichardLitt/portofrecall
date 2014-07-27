@@ -14,3 +14,9 @@
     // updateConversation: function(){
 
     // }
+
+
+    // ,
+    // seedTheDB: function(){
+    //   Contacts.insert()
+    // }

@@ -1,8 +1,3 @@
-// Call these methods in the client, and pass in the relevant user input as arguments.
-
-// This keeps the user from manipulating our db (for example, in the browser console), while still allowing the kinds of inputs we want through.
-// Because we have these, you can disable insecure.
-
 if (Meteor.isServer){
 
   Meteor.methods({
@@ -17,10 +12,24 @@ if (Meteor.isServer){
         content: input.content
       });
     },
-    updateConversation: function(id, input){
-      Conversations.update(id, {
+    updateConversation: function(conversationID, input){
+      Conversations.update(conversationID, {
         $set: {text: input}
       });
+    },
+    addContactToConversation: function(conversationID, input){
+      Conversations.update(conversationID, {
+        $addToSet: { contacts: getContactID(input)}
+      })
+    },
+    getContactID: function(contactName){
+      var contact = Contacts.findOne({name: contactName}).id
+      if(contact){
+        return contact
+      }
+      else{
+        Contacts.insert({name: contactName})
+      }
     }
   });
 }
