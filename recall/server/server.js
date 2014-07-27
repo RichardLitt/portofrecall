@@ -28,7 +28,8 @@ if (Meteor.isServer){
         return contact
       }
       else{
-        Contacts.insert({name: contactName})
+        console.log("Contact not found. Creating.")
+        return Contacts.insert({name: contactName})
       }
     }
   });
