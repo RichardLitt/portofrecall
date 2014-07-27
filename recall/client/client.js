@@ -14,7 +14,7 @@ if (Meteor.isClient){
   Template.sidebar.conversations_count = function() {
     return _.size(Conversations.find().fetch());
   };
-
+  
   Template.new_conversation.events = {
     /**
      * Save the conversation.
