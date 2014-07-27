@@ -8,17 +8,18 @@ if (Meteor.isServer){
     addContact: function(input){
       Contacts.insert({
         name: input
-      })
+      });
     },
     addConversation: function(input){
       Conversations.insert({
-        text: input
-      })
+        title: input.title,
+        content: input.content
+      });
     },
     updateConversation: function(id, input){
       Conversations.update(id, {
         $set: {text: input}
-      })
+      });
     }
-  })
+  });
 }

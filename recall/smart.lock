@@ -5,7 +5,8 @@
       "iron-router": {},
       "sass": {},
       "accounts-ui-bootstrap-3": {},
-      "bootstrap-3": {}
+      "bootstrap-3": {},
+      "iron-router-auth": {}
     },
     "packages": {
       "iron-router": {
@@ -27,6 +28,11 @@
         "git": "https://github.com/mangasocial/meteor-bootstrap-3.git",
         "tag": "v3.2.0-1",
         "commit": "17a63902fc6cf1096c5289d963c66cf28b474727"
+      },
+      "iron-router-auth": {
+        "git": "https://github.com/XpressiveCode/iron-router-auth.git",
+        "tag": "v0.2.1",
+        "commit": "39b5d70326536641bc50a184d195aa3ac49ff4a5"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",

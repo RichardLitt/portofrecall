@@ -1,9 +1,22 @@
 /* CSS declarations go here */
 
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Noto Sans'), local('NotoSans'), url('styles/fonts/noto_sans/LeFlHvsZjXu2c3ZRgBq9nLO3LdcAZYWl9Si6vvxL-qU.woff') format('woff');
+}
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Noto Sans Bold'), local('NotoSans-Bold'), url('styles/fonts/noto_sans/PIbvSEyHEdL91QLOQRnZ16RDOzjiPcYnFooOUGCOsRk.woff') format('woff');
+}
+
 $blue: #000066;
 $white: #ffffff;
 
-html, body {
+html {
   height: 100%;
 }
 
@@ -11,9 +24,35 @@ body {
   background: linear-gradient(to right bottom, $blue, palevioletred);
   color: $white;
   height: 100%;
+  font-family: "Noto Sans", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 300;
 }
 
 .splash {
-  margin-top: 200px;
+  padding-top: 200px;
   text-align: center;
+  font-weight: 100;
+  color: #000;
+  h1 {
+    font-size: 60px;
+  }
+  p { 
+    line-height: 40px;
+  }
+  button {
+    margin: 50px auto;
+    width: 140px;
+  }
+}
+
+.new-conversation {
+  input[type="text"]{
+      background-color: transparent;
+      border: 0px;
+      outline: none;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+      cursor:default;
+  }
 }
