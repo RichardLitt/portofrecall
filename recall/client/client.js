@@ -10,7 +10,11 @@ if (Meteor.isClient){
 
   //Get a larger image of the twitter image than is passed by the OAuth object.
   Template.sidebar.user_image = function() {
-    return Meteor.users.findOne().services.twitter.profile_image_url.replace('normal', 'bigger');
+    if (Meteor.user().services) {
+      return Meteor.user().services.twitter.profile_image_url.replace('normal', 'bigger');
+    } else {
+      return "";
+    }
   };
 
   Template.sidebar.contacts_count = function() {
@@ -29,6 +33,10 @@ if (Meteor.isClient){
   Template.conversation_content.helpers({
     toDateString: function(time) {
       return time && time.toDateString();
+    },
+    findContactId: function(name) {
+      console.log(name);
+      return Contacts.findOne({name: name}) && Contacts.findOne({name: name})._id;
     }
   });
 
@@ -46,7 +54,7 @@ if (Meteor.isClient){
     }
   });
 
-  Template.contacts.contactArray = function() {
+  Template.connections.connections = function() {
     return Contacts.find().fetch();
   };
 
@@ -57,7 +65,7 @@ if (Meteor.isClient){
   //   }
   // };
 
-  Template.contacts.helper =  {
+  Template.connections.helper =  {
     // contactUrl: function(_id) {
     //   console.log('working');
     //   contact = Contacts.findOne({_id: _id});
@@ -72,10 +80,19 @@ if (Meteor.isClient){
     }
   };
 
-  Template.contacts.events = {
+  Template.connections.events = {
     'click input#add_contact_submit': function() {
-      console.log(document.getElementById("add_contact").value);
-      Meteor.call('addContact', document.getElementById("add_contact").value);
+      inputValue = document.getElementById("add_contact").value;
+      console.log(inputValue);
+      checkIfUserInDatabase = Contacts.find({name: inputValue}).fetch();
+      console.log(checkIfUserInDatabase);
+      if (checkIfUserInDatabase.length !== 0) {
+        if (confirm('That user is already in the database! Are you sure?')) {
+          Meteor.call('addContact', inputValue);
+        }
+      } else {
+        Meteor.call('addContact', inputValue);
+      }
     }
   };
 
@@ -130,8 +147,8 @@ if (Meteor.isClient){
       if (e.which == 13) {
         e.preventDefault();
         Template.new_conversation.check_conversation();
-        Meteor.call('addContactToConversation', 
-          document.getElementById("new_contact").value);
+        // Meteor.call('addContactToConversation',
+        //   document.getElementById("new_contact").value);
       }
     },
 

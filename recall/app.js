@@ -1,3 +1,7 @@
+Router.configure({
+  loadingTemplate: 'loading'
+})
+
 Router.map(function(){
   this.route('login', {
     path: '/',
@@ -7,44 +11,53 @@ Router.map(function(){
     path: '/home',
     loginRequired: 'login'
   });
+  this.route('contact', {
+    path: '/contact/:_id',
+    loginRequired: 'login',
+    waitOn: function() { return Meteor.subscribe('contacts')},
+    data: function() {
+      return Contacts.findOne(this.params._id);
+    }
+  });
+  this.route('connections', {
+    path: '/connections/',
+    loginRequired: 'login',
+    waitOn: function() { return Meteor.subscribe('contacts')},
+    data: function() {
+      return Contacts.find().fetch();
+    }
+  });
   this.route('dossier', {
     path: '/dossier',
     loginRequired: 'login'
   });
-  this.route('contact', {
-    path: '/contact/:_id',
-    data: function() {
-      return Contacts.findOne(this.params._id); 
-    },
-    loginRequired: 'login'
-  });
-  this.route('contact', {
-    path: '/contacts/',
-    data: function() {
-      return Contacts.find().fetch();
-    },
-    loginRequired: 'login'
-  });
   this.route('conversation', {
     path: '/conversations/:_id',
+    loginRequired: 'login',
+    waitOn: function() { return Meteor.subscribe('conversations', this.params._id)},
     data: function() {
+      console.log(Conversations.findOne(this.params._id));
       return Conversations.findOne(this.params._id);
-    },
-    loginRequired: 'login'
+    }
   });
+  this.route('*', {
+    action: function() {
+      Router.go('home');
+    }
+  })
 });
 
 var mustBeSignedIn = function(pause) {
   if (!(Meteor.user() || Meteor.loggingIn())) {
     Router.go('login');
-    pause();
+    //pause();
   }
 };
 
 var goToDashboard = function(pause) {
   if (Meteor.user()) {
     Router.go('home');
-    pause();
+    //pause();
   }
 };
 
