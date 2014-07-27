@@ -1,20 +1,24 @@
-// if (Meteor.isServer){
-//   Meteor.methods({
-//     addPerson: function(input){
-//       People.insert({
-//         attribute: input
-//       })
-//     },
-//     updatePerson: function(id, input){
-//       People.update(id, {
-//         $set: {attribute: input}
-//       })
-//     },
-//     addConversation: function(){
+// Call these methods in the client, and pass in the relevant user input as arguments.
 
-//     },
-//     updateConversation: function(){
+// This keeps the user from manipulating our db (for example, in the browser console), while still allowing the kinds of inputs we want through.
+// Because we have these, you can disable insecure.
 
-//     }
-//   })
-// }
+if (Meteor.isServer){
+  Meteor.methods({
+    addContact: function(input){
+      Contacts.insert({
+        name: input
+      })
+    },
+    addConversation: function(input){
+      Conversations.insert({
+        text: input
+      })
+    },
+    updateConversation: function(id, input){
+      Conversations.update(id, {
+        $set: {text: input}
+      })
+    }
+  })
+}

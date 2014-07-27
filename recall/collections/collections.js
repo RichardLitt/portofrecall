@@ -1,2 +1,2 @@
-// People = new Meteor.Collection('people');
-// Conversations = new Meteor.Collection('conversations');
+Contacts = new Meteor.Collection('contacts');
+Conversations = new Meteor.Collection('conversations');
