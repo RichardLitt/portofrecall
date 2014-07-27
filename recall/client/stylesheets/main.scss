@@ -105,8 +105,19 @@ body {
   }
 }
 
-.contacts {
-
+.contact-box {
+    background-color: rgba(0, 63, 11, .8);
+    margin: 15px 15px 15px 0px;
+    color: #fff;
+    text-align: center;
+    &:hover {
+      color: #fff;
+      background-color: rgba(0, 63, 11, .4);
+    }
+    a:hover {
+      color: #fff !important;
+      text-decoration: none;
+    }
 }
 
 .new-conversation, .add-contact {

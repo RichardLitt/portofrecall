@@ -58,17 +58,16 @@ if (Meteor.isClient){
   // };
 
   Template.contacts.helper =  {
-    contactUrl: function(contact) {
-      console.log('working');
-      if (this.contact) {
-        contact = Contacts.findOne({name: this.contact});
-        return contact && contact.split(' ').join('-');
-      }
-    },
+    // contactUrl: function(_id) {
+    //   console.log('working');
+    //   contact = Contacts.findOne({_id: _id});
+    //   return $Session.get(contact.name && contact.name.split(' ').join('-'));
+    // },
     conversationsCount: function(id) {
-      if (id) {
-        conversations = Conversations.find({contact: id});
-        return _.size(conversations);
+      console.log(_id);
+      if (_id) {
+        conversations = Conversations.find({contact: _id});
+        return Session.get(_.size(conversations));
       }
     }
   };
@@ -92,13 +91,21 @@ if (Meteor.isClient){
     } else {
       var new_conversation_title = 
         document.getElementById("new_conversation_title").value ?
-        document.getElementById("new_conversation_title").value : '',
-
-        new_conversation =
+        document.getElementById("new_conversation_title").value : '';
+      var new_conversation =
         document.getElementById("new_conversation").value ?
-        document.getElementById("new_conversation").value : '',
+        document.getElementById("new_conversation").value : '';
+      var new_contact = document.getElementById("new_contact").value;
 
-        new_contact = document.getElementById("new_contact").value;
+      console.log(new_conversation_title, new_conversation, new_contact);
+
+      Contacts.insert({
+        name: new_contact,
+        time: new Date(),
+        owner: Meteor.users.findOne()._id
+      });
+
+      console.log('Contacts:', Contacts);
 
       conversationId =  Conversations.insert({
         title: new_conversation_title,
@@ -107,11 +114,7 @@ if (Meteor.isClient){
         time: new Date(),
         owner: Meteor.users.findOne()._id
       });
-      Contacts.insert({
-        name: new_contact,
-        time: new Date(),
-        owner: Meteor.users.findOne()._id
-      });
+
       Router.go('conversation', {_id: conversationId});
     }
     // if (param.length() === 2)
@@ -137,6 +140,22 @@ if (Meteor.isClient){
         document.getElementById("new_conversation_title").value,
         new_conversation = document.getElementById("new_conversation").value,
         new_contact = document.getElementById("new_contact").value;
+
+      if (!new_contact) {
+        alert('You have to add a contact!');
+        return;
+      }
+
+      check_contact = Contacts.findOne({name: new_contact});
+
+      if (!check_contact) {
+        Contacts.insert({
+          name: new_contact,
+          time: new Date(),
+          owner: Meteor.users.findOne()._id
+        });
+      }
+
       conversationId =  Conversations.insert({
         title: new_conversation_title,
         content: Session.set("markdown_data",new_conversation),

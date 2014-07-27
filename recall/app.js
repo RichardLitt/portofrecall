@@ -12,7 +12,7 @@ Router.map(function(){
     loginRequired: 'login'
   });
   this.route('contact', {
-    path: '/contacts/:name',
+    path: '/contact/:_id',
     data: function() {
       return Contacts.findOne(this.params._id); 
     },

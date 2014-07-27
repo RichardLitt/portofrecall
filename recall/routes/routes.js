@@ -41,7 +41,7 @@ ContactController = RouteController.extend({
   }
 });
 
-ContactController = RouteController.extend({
+ContactsController = RouteController.extend({
   layoutTemplate: 'home',
   yieldTemplates: {
     'sidebar': {
