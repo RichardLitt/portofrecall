@@ -20,13 +20,21 @@ if (Meteor.isClient){
      * Save the conversation.
      * @return {[type]} [description]
      */
-    'click input.save': function () {
+    'click input#save': function () {
       var new_conversation_title = document.getElementById("new_conversation_title").value;
       var new_conversation = document.getElementById("new_conversation").value;
       Meteor.call('addConversation', {
         title: new_conversation_title,
         content: new_conversation
       });
+    },
+
+    'keypress input#new_contact': function(e) {
+      if (e.which == 13) {
+        console.log('Enter being called');
+        e.preventDefault();
+        Meteor.call('addContactToConversation', document.getElementById("new_contact").value);
+      }
     }
   };
 }

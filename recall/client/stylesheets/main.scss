@@ -8,6 +8,8 @@
   border-radius: $radius;
 }
 
+@import 'packages/font-awesome-sass/font-awesome';
+
 @font-face {
   font-family: 'Noto Sans';
   font-style: normal;
@@ -71,13 +73,13 @@ body {
     overflow: hidden;
     resize: none;
   }
-  input#new_conversation_title {
+  input#new_conversation_title, input#new_contact {
       background-color: rgba(0,0,0,.1);
       width: 50%;
       line-height: 30px;
       font-size: 22px;
       height: 40px;
-      margin-bottom: 0px;
+      margin-bottom: 20px;
   }
   input#save {
     width: 10%;

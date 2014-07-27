@@ -6,7 +6,8 @@
       "sass": {},
       "accounts-ui-bootstrap-3": {},
       "bootstrap-3": {},
-      "iron-router-auth": {}
+      "iron-router-auth": {},
+      "font-awesome-sass": {}
     },
     "packages": {
       "iron-router": {
@@ -34,10 +35,20 @@
         "tag": "v0.2.1",
         "commit": "39b5d70326536641bc50a184d195aa3ac49ff4a5"
       },
+      "font-awesome-sass": {
+        "git": "https://github.com/reywood/meteor-font-awesome-sass.git",
+        "tag": "v4.1.0-1",
+        "commit": "64b05d3c7654cf83b9f85240d1a340cbe1d55123"
+      },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",
         "tag": "v0.2.4",
         "commit": "b40e9b0612329288d75cf52ad14a7da64bb8618f"
+      },
+      "scss": {
+        "git": "https://github.com/fourseven/meteor-scss.git",
+        "tag": "v0.9.3",
+        "commit": "185f3b2787fb85e653f7b7bf603d1493ed14943d"
       }
     }
   }
