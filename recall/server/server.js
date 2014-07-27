@@ -31,5 +31,6 @@ if (Meteor.isServer){
         console.log("Contact not found. Creating.")
         return Contacts.insert({name: contactName})
     }
-  });
+  }
+});
 }

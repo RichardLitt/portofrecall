@@ -14,7 +14,8 @@ if (Meteor.isClient){
   Template.sidebar.conversations_count = function() {
     return _.size(Conversations.find().fetch());
   };
-  
+
+
   Template.new_conversation.events = {
     /**
      * Save the conversation.
@@ -31,3 +32,15 @@ if (Meteor.isClient){
   };
 }
 
+
+
+  Template.new_conversation.startAutosave = function(){
+    setInterval(Template.new_conversation.saveConversation, 5000)
+  }
+
+  Template.new_conversation.saveConversation = function(){
+    console.log("Saving the conversation...")
+    Meteor.call('updateConversation', {
+      content: document.getElementById("new_conversation").value
+    })
+  }
