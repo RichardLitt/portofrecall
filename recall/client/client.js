@@ -132,6 +132,19 @@ if (Meteor.isClient){
         owner: Meteor.users.findOne()._id
       });
 
+      Meteor.call('addConversation', {
+        title: new_conversation_title,
+        content: new_conversation,
+        contact: new_contact,
+        time: new Date(),
+        owner: Meteor.users.findOne()._id
+      }, function(err, result){
+        // put id returned from insert in url
+        // this allows us to grab it for autosave
+
+        console.log(result)
+      })
+
       Router.go('conversation', {_id: conversationId});
     }
     // if (param.length() === 2)
